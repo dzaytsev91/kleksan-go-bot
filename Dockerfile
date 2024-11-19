@@ -13,7 +13,7 @@ WORKDIR $GOPATH/src/smallest-golang/app/
 
 COPY . .
 
-RUN go build -ldflags="-s -w" -o /main .
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /main main.go
 
 FROM scratch
 
