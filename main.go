@@ -32,7 +32,7 @@ func whereHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	if time.Now().Day()%2 == 0 {
 		_, err := b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:    update.Message.Chat.ID,
-			Text:      "Сегодня колоть вправо",
+			Text:      "Сегодня колоть влево",
 			ParseMode: models.ParseModeMarkdown,
 			ReplyParameters: &models.ReplyParameters{
 				MessageID: update.Message.ID,
@@ -45,7 +45,7 @@ func whereHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	} else {
 		_, err := b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:    update.Message.Chat.ID,
-			Text:      "Сегодня колоть влево",
+			Text:      "Сегодня колоть вправо",
 			ParseMode: models.ParseModeMarkdown,
 			ReplyParameters: &models.ReplyParameters{
 				MessageID: update.Message.ID,
