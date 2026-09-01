@@ -29,7 +29,12 @@ func main() {
 }
 
 func whereHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
-	if time.Now().Day()%2 == 0 {
+	// Счёт дней с Unix-эпохи растёт на 1 каждый день независимо от границ
+	// месяца и года, поэтому соседние дни всегда имеют разную чётность и
+	// направление никогда не повторяется (в отличие от Day()/YearDay()).
+	dayNumber := int(time.Now().Unix() / 86400)
+
+	if dayNumber%2 == 0 {
 		_, err := b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:    update.Message.Chat.ID,
 			Text:      "Сегодня колоть влево",
