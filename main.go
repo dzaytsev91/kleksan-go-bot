@@ -34,7 +34,7 @@ func whereHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	// направление никогда не повторяется (в отличие от Day()/YearDay()).
 	dayNumber := int(time.Now().Unix() / 86400)
 
-	if dayNumber%2 == 0 {
+	if dayNumber%2 != 0 {
 		_, err := b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:    update.Message.Chat.ID,
 			Text:      "Сегодня колоть влево",
